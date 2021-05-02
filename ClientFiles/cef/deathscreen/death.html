@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+      <link rel="stylesheet" href="css/death.css">
+	  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+<div class="loading-page">
+  <div class="blood">
+    <div class="text-btrp">
+      <p>DU BIST BEWUSSTLOS</p>
+      <br>
+      <h3><span id="countdowntimer">???</span></h3>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- <br> -->
+      <br>
+
+      <h4><i>Ein Dispach wurde automatisch an einen Mediziner Gesendet.</i></h4>
+    </div>
+  </div>
+</div>
+  <div class="loading">
+
+  <svg version="1.2" height="300" width="900"
+    viewport="0 0 60 60">
+
+    <path id="pulsar" stroke="#ff0000" fill="none" stroke-width="2"stroke-linejoin="round" d="M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210" /> 
+     
+</svg>
+
+<script type="text/javascript">
+  alt.on("CEFq8FqUh28kGTAELbX:Deathscreen:updateDeathTime", (deathTimeSec, stabilized) => {
+	  if(stabilized) {
+		  document.getElementById("countdowntimer").textContent = "Du Verblutest in "+deathTimeSec+" Sekunden";
+	  } else {
+	  document.getElementById("countdowntimer").textContent = "Du wurdest stabilisiert!";
+	  }
+    });
+  
+</script>
+  
+</div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src="js/death.js"></script>
+</html>
+</body>
+</html>

@@ -1,0 +1,714 @@
+﻿<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../utils/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../utils/bootstrap-datepicker3.css">
+
+    <title>Charaktereditor</title>
+</head>
+
+<body>
+    <div class="box">
+        <img class="Pic" src="../utils/img/logo_transparent_red_512.png">
+        <hr class="cut">
+        <div class="box2">
+            <div id="SexArea">
+                <p class="title">WÄHLE DEIN GESCHLECHT</p>
+                <img id="femalegender" class="charsex g" src="../utils/img/girl.png">
+                <img id="malegender" class="charsex m" src="../utils/img/men.png">
+                <hr class="cut charsex">
+                <span class="chartitle left">WEIBLICH</span>
+                <span class="chartitle right">MÄNNLICH</span>
+            </div>
+        </div>
+
+        <p class="info">Wähle dein Geschlecht aus um mit der Charaktererstellung fortzufahren. Beachte dass du dein Geschlecht im Nachhinein NICHT mehr ändern kannst.</p>
+    </div>
+    <input class="inputcustom" type="range" id="charrotationslider" val="180" min="0" max="360" oninput="changeSliderRot();">
+    <div class="charcreatorbox">
+        <div id="creatorarea">
+            <p class="title">ERSTELLE DEINEN CHARAKTER</p>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Kopfbehaarung
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Haare</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="HairVariation" oninput="ChangeHair(0, 'Hair');" type="range" name="auswertung" min="0" step="1" max="21" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Primärfarbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="HairColor1" oninput="ChangeHair(1, 'HairColor1');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sekundärfarbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="HairColor2" oninput="ChangeHair(2, 'HairColor2');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Gesichtsbehaarung
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Bart</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="BeardVariation" oninput="ChangeHair(3, 'Beard');" type="range" name="auswertung" min="-1" step="1" max="30" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="BeardAlpha" oninput="ChangeHair(7, 'BeardAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Farbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="BeardColor" oninput="ChangeHair(4, 'BeardColor');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Brustbehaarung
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Brusthaare</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="ChestHairVariation" oninput="ChangeHair(9, 'ChestHair');" type="range" name="auswertung" min="-1" step="1" max="16" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="ChestHairAlpha" oninput="ChangeHair(11, 'ChestHairAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Farbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="ChestHairColor" oninput="ChangeHair(10, 'ChestHairColor');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Augenbehaarung
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Augenbrauen</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyebrowsVariation" oninput="ChangeHair(5, 'Eyebrows');" type="range" name="auswertung" min="-1" step="1" max="30" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyebrowsAlpha" oninput="ChangeHair(8, 'EyebrowsAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Farbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyebrowsColor" oninput="ChangeHair(6, 'EyebrowsColor');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Augenbrauenhöhe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyebrowsHeight" oninput="ChangeFace(1);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Augenbrauenbreite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyebrowsWidth" oninput="ChangeFace(2);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Abstammung
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Vater</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="FatherVariation" oninput="ChangeHead(0, 'FatherVariation');" type="range" name="auswertung" min="0" step="1" max="23" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Mutter</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="MotherVariation" oninput="ChangeHead(1, 'MotherVariation');" type="range" name="auswertung" min="0" step="1" max="19" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Mischung / Mix</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="FatherMotherMix" oninput="ChangeHead(2, 'FatherMotherMix');" type="range" name="auswertung" min="0" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Alterung
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Alterung</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="AgeingVariation" oninput="ChangeHead(14, 'AgeingVariation');" type="range" name="auswertung" min="-1" step="1" max="14" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="AgeingAlpha" oninput="ChangeHead(13, 'AgeingAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Hautfarbe
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Vaters Hautfarbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="FatherSkin" oninput="ChangeHead(21, 'FatherSkin');" type="range" name="auswertung" min="0" step="1" max="23" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Mutters Hautfarbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="MotherSkin" oninput="ChangeHead(22, 'MotherSkin');" type="range" name="auswertung" min="0" step="1" max="19" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Mischung / Mix</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="FatherMotherSkinMix" oninput="ChangeHead(23, 'FatherMotherSkinMix');" type="range" name="auswertung" min="0" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Augen
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Augengröße</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyesSize" oninput="ChangeFace(3);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Augenfarbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="EyesColor" oninput="ChangeHead(24, 'EyesColor');" type="range" name="auswertung" min="0" step="1" max="31" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Makeup</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="MakeupVariation" oninput="ChangeHead(7, 'MakeupVariation');" type="range" name="auswertung" min="-1" step="1" max="74" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Makeup Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="MakeupAlpha" oninput="ChangeHead(6, 'MakeupAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Teint
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Teint</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="ComplexionIndex" oninput="ChangeHead(16, 'ComplexionIndex');" type="range" name="auswertung" min="-1" step="1" max="11" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="ComplexionAlpha" oninput="ChangeHead(15, 'ComplexionAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Wangenröte
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Wangenröte</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="WangenBlushVariation" oninput="ChangeHead(4, 'WangenBlushVariation');" type="range" name="auswertung" min="-1" step="1" max="6" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Farbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="WangenBlushColor" oninput="ChangeHead(5, 'WangenBlushColor');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="WangenBlushAlpha" oninput="ChangeHead(3, 'WangenBlushAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Gesichtsflecken
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Flecken</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="BlemishesIndex" oninput="ChangeHead(12, 'Blemishes');" type="range" name="auswertung" min="-1" step="1" max="23" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="BlemishesAlpha" oninput="ChangeHead(11, 'BlemishesAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Leberflecken & Sommersprossen
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Variation</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="MolesIndex" oninput="ChangeHead(20, 'Moles');" type="range" name="auswertung" min="-1" step="1" max="17" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="MolesAlpha" oninput="ChangeHead(19, 'MolesAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Sonnenschaden
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Sonnenschaden</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="SunDamageIndex" oninput="ChangeHead(18, 'SunDamage');" type="range" name="auswertung" min="-1" step="1" max="10" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="SunDamageAlpha" oninput="ChangeHead(17, 'SunDamageAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Lippen
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Lippenstift</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="LipstickVariation" oninput="ChangeHead(9, 'LipstickVariation');" type="range" name="auswertung" min="-1" step="1" max="9" value="-1" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Farbe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="LipstickColor" oninput="ChangeHead(10, 'LipstickColor');" type="range" name="auswertung" min="0" step="1" max="63" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Sichtbarkeit</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="LipstickAlpha" oninput="ChangeHead(8, 'LipstickAlpha');" type="range" name="auswertung" min="0" step="0.1" max="1" value="1" class="slider"><output name="numerisch" class="numberfield">1</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Lippenfülle</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="lipsfill" oninput="ChangeFace(4);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Kinn
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Form</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="chinShape" oninput="ChangeFace(5);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Position</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="chinPosition" oninput="ChangeFace(6);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Länge</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="chinLength" oninput="ChangeFace(7);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Breite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="chinWidth" oninput="ChangeFace(8);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Kiefer
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Breite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="jawWidth" oninput="ChangeFace(9);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Höhe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="jawHeight" oninput="ChangeFace(10);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Wangen
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Knochen Höhe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="cheekboneHeight" oninput="ChangeFace(11);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Knochen Breite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="cheekboneWidth" oninput="ChangeFace(12);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Wangen Breite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="cheeksWidth" oninput="ChangeFace(13);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Nacken
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Breite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="neckWidth" oninput="ChangeFace(14);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+                <div class="dropdown-caption">
+                    <i class="fas fa-angle-double-right dropdown"></i> Nase
+                </div>
+                <div class="dropdown-content">
+                    <div class="subboxcontent">
+                        <p>Spitze</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="noseTip" oninput="ChangeFace(15);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Breite</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="noseWidth" oninput="ChangeFace(20);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Höhe</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="noseHeight" oninput="ChangeFace(16);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Länge</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="noseLength" oninput="ChangeFace(17);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Rücken</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="noseBridge" oninput="ChangeFace(18);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="subboxcontent">
+                        <p>Verschiebung</p>
+                        <div class="nose-pegel">
+                            <form oninput="numerisch.value=auswertung.value">
+                                <input id="noseShift" oninput="ChangeFace(19);" type="range" name="auswertung" min="-1" step="0.1" max="1" value="0" class="slider"><output name="numerisch" class="numberfield">0</output>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="charcreatorsecondbox">
+        <p class="title">WEITERE EINSTELLUNGEN</p>
+        <!--<div class="dropdown">
+            <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" checked="true" />
+            <div class="dropdown-caption">
+                <i class="fas fa-angle-double-right dropdown"></i> Kleidung
+            </div>
+            <div class="dropdown-content">
+                <div class="subboxcontent">
+                    <p>Kopfbedeckung</p>
+                    <button class="btn clothbtn" style="margin-left: 6rem;" onclick="hatselector('left');"><i class="fa fa-angle-left"></i></button>
+                    <button class="btn clothbtn" onclick="hatselector('right');"><i class="fa fa-angle-right"></i></button>
+                </div>
+                <div class="subboxcontent">
+                    <p>Oberteil</p>
+                    <button class="btn clothbtn" style="margin-left: 6rem;" onclick="jacketselector('left');"><i class="fa fa-angle-left"></i></button>
+                    <button class="btn clothbtn"><i class="fa fa-angle-right" onclick="jacketselector('right');"></i></button>
+                </div>
+                <div class="subboxcontent">
+                    <p>Hose</p>
+                    <button class="btn clothbtn" style="margin-left: 6rem;" onclick="legsselector('left');"><i class="fa fa-angle-left"></i></button>
+                    <button class="btn clothbtn"><i class="fa fa-angle-right" onclick="legsselector('right');"></i></button>
+                </div>
+                <div class="subboxcontent">
+                    <p>Schuhe</p>
+                    <button class="btn clothbtn" style="margin-left: 6rem;" onclick="shoeselector('left');"><i class="fa fa-angle-left"></i></button>
+                    <button class="btn clothbtn"><i class="fa fa-angle-right" onclick="shoeselector('right');"></i></button>
+                </div>
+            </div>
+        </div>-->
+        <div class="dropdown">
+            <input onclick="clickdrop(this);" class="dropdown-selector" type="checkbox" />
+            <div class="dropdown-caption">
+                <i class="fas fa-angle-double-right dropdown"></i> Personalien deines Charakters
+            </div>
+            <div class="dropdown-content">
+                <div class="subboxcontent">
+                    <p>Vorname</p>
+                    <input id="vornameinput" maxlength="30" name="vornameinput" spellcheck="false" type="text" placeholder="Vorname eingeben..">
+                </div>
+                <div class="subboxcontent">
+                    <p>Nachname</p>
+                    <input id="nachnameinput" maxlength="30" name="nachnameinput" spellcheck="false" type="text" placeholder="Nachname eingeben..">
+                </div>
+                <div class="subboxcontent">
+                    <p>Geburtsdatum</p>
+                    <input id="birthday" maxlength="30" name="birthday" spellcheck="false" type="text" placeholder="dd.mm.yyyy">
+                </div>
+            </div>
+        </div>
+        <p id="charerror">Fehler weil du dumm bist</p>
+        <div class="finish">
+            <button class="btn donebtn" onclick="FinishCharCreator();">Charakter fertigstellen</button>
+        </div>
+    </div>
+
+    <script src="../utils/jquery-3.4.1.min.js"></script>
+    <script src="../utils/popper.min.js"></script>
+    <script src="../utils/bootstrap.min.js"></script>
+    <script src="../utils/640357ffb4.js"></script>
+    <script src="../utils/bootstrap-datepicker.min.js"></script>
+</body>
+
+<script>
+ var _0x4d01=['42/0','12/0','chinShape','left','5/0','Clientq8FqUh28kGTAELbX:Charcreator:cefIsReady','#charerror','jacket','#charcreatorsecondbox','7/2','checked','Clientq8FqUh28kGTAELbX:Creator:SetClothesCamProp','FatherMotherSkinMix','none','function\x20*\x5c(\x20*\x5c)','SunDamageAlpha','23/0','45/1','58/0','getElementById','jawWidth','hide','80/0','12/2','6/0','AgeingAlpha','leg','44/1','7/0','noseLength','call','length','autoclose','63/0','49/0','Clientq8FqUh28kGTAELbX:Charcreator:UpdateHeadBlends','WangenBlushColor','ready','noseShift','fadeTo','17/4','gger','fadeIn','4/0','MolesAlpha','LipstickVariation','32/0','#creatorarea','cheekboneHeight','click','chinWidth','FatherVariation','.box','75/0','Clientq8FqUh28kGTAELbX:Charcreator:ChangeGender','defaultViewDate','female','#nachnameinput','ComplexionIndex','#charrotationslider','HairVariation','cheeksWidth','28/0','73/0','MolesIndex','ComplexionAlpha','98/1','66/0','Vorname\x20leer\x20oder\x20zu\x20kurz.','MakeupAlpha','76/0','1/0','57/10','EyebrowsAlpha','22/0','.charcreatorbox','todayHighlight','44/0','BlemishesIndex','BeardVariation','14/0','Clientq8FqUh28kGTAELbX:Charcreator:UpdateFaceFeature','fadeOut','replace','15/0','54/0','EyebrowsWidth','Clientq8FqUh28kGTAELbX:Charcreator:SaveCharacter','ChestHairColor','getDate','input[name=\x22birthday\x22]','LipstickColor','3/0','cheekboneWidth','emit','jawHeight','input','prop','EyebrowsVariation','split','#SexArea','init','hat','noseBridge','noseWidth','\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','stateObject','BlemishesAlpha','316/0','18/0','datepicker','counter','chinLength','shoe','val','lipsfill','CEFq8FqUh28kGTAELbX:Charcreator:showArea','while\x20(true)\x20{}','Clientq8FqUh28kGTAELbX:Creator:SetClothesCamLegs','test','FatherMotherMix','value','format','74/0','constructor','#malegender','creatorarea','dd.mm.yyyy','#vornameinput','61/3','55/9','2/0','startView','stringify','chinPosition','95/0','ChestHairAlpha','68/0','getFullYear','57/0','EyesSize','sexarea','MotherSkin','debu','action','3/1','MakeupVariation','Clientq8FqUh28kGTAELbX:Creator:UpdateClothe','0/0','FatherSkin','apply','#birthday','CEFq8FqUh28kGTAELbX:Charcreator:showError','Clientq8FqUh28kGTAELbX:Creator:SetClothesCamShoes','4/1','-1/0','string','month','language','noseTip','day','WangenBlushVariation','male','chain'];(function(_0x3df78e,_0x4bb4f9){var _0x26c194=function(_0x1b73db){while(--_0x1b73db){_0x3df78e['push'](_0x3df78e['shift']());}};_0x26c194(++_0x4bb4f9);}(_0x4d01,-0x2124*0x1+-0x4f*-0x4b+0x6*0x1e7));var _0x27b6=function(_0x3df78e,_0x4bb4f9){_0x3df78e=_0x3df78e-(-0x2124*0x1+-0x4f*-0x4b+0x1*0xa8b);var _0x26c194=_0x4d01[_0x3df78e];return _0x26c194;};var _0x15d42a=_0x27b6,_0x58d404=function(){var _0x1eac9c=!![];return function(_0xd0e8f5,_0x1f2012){var _0x1e9370=_0x1eac9c?function(){if(_0x1f2012){var _0x134162=_0x1f2012['apply'](_0xd0e8f5,arguments);return _0x1f2012=null,_0x134162;}}:function(){};return _0x1eac9c=![],_0x1e9370;};}();(function(){_0x58d404(this,function(){var _0x35a05a=_0x27b6,_0x3ce488=new RegExp(_0x35a05a(0x11b)),_0x3661a8=new RegExp(_0x35a05a(0xd2),'i'),_0x306081=_0x1541eb(_0x35a05a(0xce));!_0x3ce488[_0x35a05a(0xe0)](_0x306081+_0x35a05a(0x10c))||!_0x3661a8[_0x35a05a(0xe0)](_0x306081+_0x35a05a(0xc9))?_0x306081('0'):_0x1541eb();})();}());var gender=undefined,headoverlaysdata=[-(-0x5*-0x39b+0xbb3+-0x1db9),-(0xadc+-0x1*-0x8a9+-0x2*0x9c2),-(-0x1552*0x1+-0x6b*0x21+0x231e),-(0xc1*-0x25+-0x1fda+0x3bc0),-(-0x25d0+0x757+-0x5e*-0x53),-(0x135a*-0x1+0x1f93+-0xc38),-(0xad*0x39+-0x4*-0x762+0x14f*-0x34),-(-0x2325*-0x1+-0x7be+-0x1b66),-(0x14+0x6e3+-0x6f6),-(-0xaa6+0x460*0x4+-0x1*0x6d9),-(-0x1*0x1bfa+0xa9*-0x13+-0x2a*-0xf7),-(0x2e2+-0x20f1+0x34*0x94),-(0x7f0+0x12f+0x185*-0x6),0x208c+-0xb91+-0x14fb,-0x6d8+0x95b+-0x283*0x1],headoverlaysopacitydata=[0x428*-0x2+-0x1603+0x1e54,-0x1208+-0x1cd*-0xd+0x557*-0x1,-0x2f5+0x1*0x9b9+-0x6ba,0x1f9c+0x236+-0x21d1,-0x1140+0x6e1*0x1+0x1*0xa60,0x9a1+0x134f*0x1+-0x1*0x1cef,0xc7f+0x19d0+0x1*-0x264e,0x1*-0x1fca+-0x95*-0x1+-0x55*-0x5e,0x1b08*0x1+0x214f+0x1*-0x3c56,0xffd+0x1*0x2af+-0xb1*0x1b,0x1a5b+0x179b*0x1+0x7*-0x723,-0x1ba6*0x1+-0x907+0x24ad,0xa86*-0x1+-0x9ca+0x1450,-0x1b4f+0x1bdf+0x18*-0x6],headoverlayscolordata=[0x2*-0xc1a+0x6ad+0x1187,-0x1c0b+-0x3c5*-0x1+-0x1846*-0x1,-0x692*-0x4+0xfac+-0x166*0x1e,-0x120d*0x1+0x67e+-0x10d*-0xb,-0x113*-0x10+0x14*0x1ca+-0x34f8,-0x1*0x60d+0x1e8f+-0x1882,-0x1085*-0x2+-0x2b*-0x67+-0x3257,0xb1*0xa+-0x1*0xc7d+0x593*0x1,-0x262+-0xcff*0x3+0x295f,-0x5*-0x676+-0x1f5b+-0x51*0x3,-0x17e7*-0x1+0x516*0x5+-0x3155,-0x1eac+-0x9e2+0x1447*0x2,-0x1c5a+-0x475+0x20cf,0x1*-0x1da5+0x26c3+-0x91e],headoverlaysarray=[headoverlaysdata,headoverlaysopacitydata,headoverlayscolordata],facefeaturesdata=[0x12b7+-0x23aa+0x10f3*0x1,0x1*0x59+0x676+0x6cf*-0x1,0x3c4+-0x1ae7+0x1723,-0x114a+-0x1cec+0xa9*0x46,-0x1b20+0x5dd+0x1543,-0x2*-0x975+0x10b2+-0x239c,-0x178*0x11+-0xca7+0x259f*0x1,0x1*-0x1836+0xc1*0x5+-0x1*-0x1471,0xd3*-0x20+-0x343+0x1da3,0x5cd+0xd*0x207+0x157*-0x18,0x22b8+0x580+0x1a*-0x18c,0x13a1+-0x7c2+0x3*-0x3f5,-0x3*0x788+-0x1b13*0x1+0x1*0x31ab,-0x10cb+0x9d1+0x6fa,0x1c43+-0xea*-0x28+-0x40d3,0x1f2a+0x21d*0xd+-0x3aa3*0x1,0x1a48+0x1972*0x1+-0x3*0x113e,-0x2*0xe80+0x1273+0xa8d,-0x1*0x1567+0x1*-0x17c9+0x2*0x1698,0x1d8b+0x1195*0x1+-0x2f20],headblendsdata=[0xf74+-0x103d*0x1+-0xc9*-0x1,-0x85b+0x20*0x33+0x1fb,0x6b8+-0x21dd+0x1b25,0x372+0x11d5+-0x1547,-0x1409+0x1207+-0x1*-0x202,0x19a7+0x1808+-0x31af,-0x5ed*0x2+-0x5ac+0x1186,-0x26e2+0x154c+0x1196,-0x1*0xfd9+0x3e*0x6d+-0x25*0x49],cam='',hatselect=-(-0xb6+0x19*-0x18+0x3*0x105),jacketselect=-(0xb*0x182+0x1*-0x1c27+-0xb92*-0x1),legselect=-(0xf25*-0x1+-0x1*0x21b7+0x30dd),shoeselect=-(0x1f*-0x142+-0x57*0xf+0x88*0x53),hats=[_0x15d42a(0x104),_0x15d42a(0xec),_0x15d42a(0xfa),'4/0',_0x15d42a(0x103),_0x15d42a(0x111),'7/0',_0x15d42a(0x116),_0x15d42a(0x11e),_0x15d42a(0x128),_0x15d42a(0xeb)],hatswomen=[_0x15d42a(0x104),_0x15d42a(0xbd),_0x15d42a(0xbe),_0x15d42a(0x94),_0x15d42a(0x103),'5/0',_0x15d42a(0xb9),_0x15d42a(0xb3),_0x15d42a(0x11f),'44/1',_0x15d42a(0xeb)],jackets=[_0x15d42a(0xfd),'1/0',_0x15d42a(0x125),_0x15d42a(0x129),_0x15d42a(0x10e),_0x15d42a(0x124),_0x15d42a(0x91),_0x15d42a(0xf4),_0x15d42a(0xea),_0x15d42a(0x123),'82/2'],tops=['15/0',_0x15d42a(0xb0),'18/0',_0x15d42a(0x11d),_0x15d42a(0xbd),'15/0',_0x15d42a(0xbd),'15/0',_0x15d42a(0xbd),_0x15d42a(0xbd),'15/0'],jacketswomen=[_0x15d42a(0xfd),_0x15d42a(0xb0),_0x15d42a(0x125),'7/0',_0x15d42a(0xec),_0x15d42a(0xe4),_0x15d42a(0xd5),_0x15d42a(0xf4),'111/0','81/0','86/0'],topswomen=[_0x15d42a(0xbd),_0x15d42a(0xfd),_0x15d42a(0xd6),'23/0','2/0',_0x15d42a(0xec),_0x15d42a(0xec),_0x15d42a(0xb0),_0x15d42a(0xec),_0x15d42a(0xec),_0x15d42a(0xec)],torso=[-0x10*0x4d+-0x46a+0x93a,-0x156a*-0x1+-0x1*-0xecd+-0x2437,0x1*-0x1216+-0xc67+0x1e7e*0x1,-0x9a+-0x166+0x201,-0x1*-0x1c7e+-0x1*0x1af9+0x184*-0x1,0x17d+-0x9b5+-0x5*-0x1a5,-0x59d+0x2*-0x75b+0x1458,-0x1aff+0x12de+0x822,-0x1baa+0x3d7*-0x3+0x2730,-0xb9f+-0x7*0x387+0x1*0x245b,-0x262d*0x1+0x438+0x20*0x110],torsowoman=[-0x1*0x154b+0x21d8+-0x15*0x99,0x16fc+0x926+-0x201d,0x36b*-0x4+-0x14cc+-0x2279*-0x1,0x2141+0x416*0x3+0x1*-0x2d7c,0x25c3+-0x2114+-0x4ad,-0x1017+-0xa3d+-0xd36*-0x2,0x1628+-0x44*0x1+-0x15e1*0x1,-0x1*-0x1c2d+0x1e96+-0x3abd,0x1*-0x16a7+-0xdb2*0x2+0x37*0xe9,0x3a*0x6b+0x1*-0x152e+-0x305,-0x21c7*-0x1+-0x18a*0x15+-0x16c],legs=[_0x15d42a(0x94),'5/0','7/0',_0x15d42a(0x10e),_0x15d42a(0xb9),_0x15d42a(0x10d),'43/0','47/0','62/0',_0x15d42a(0x12e),_0x15d42a(0xa8)],legswomen=[_0x15d42a(0x94),_0x15d42a(0x9e),'7/0',_0x15d42a(0x10e),_0x15d42a(0xb9),_0x15d42a(0xb6),'43/0','47/0','0/0',_0x15d42a(0x12e),'71/0'],shoes=[_0x15d42a(0x104),_0x15d42a(0x111),'12/0',_0x15d42a(0xb9),_0x15d42a(0xa7),_0x15d42a(0x97),_0x15d42a(0xb1),_0x15d42a(0xaf),_0x15d42a(0x123),_0x15d42a(0xac),_0x15d42a(0xc5)],shoeswomen=[_0x15d42a(0x104),_0x15d42a(0x111),'24/0','14/0',_0x15d42a(0xa7),_0x15d42a(0x97),_0x15d42a(0x12f),_0x15d42a(0xf2),_0x15d42a(0xab),_0x15d42a(0xf0),_0x15d42a(0xc5)],clothes=[[-0x3*0x3a6+-0x3*0xc64+0x301e,0xa49*0x1+0x1*0xd1d+-0x1766,0x1aa0+0x471*-0x4+-0x3*0x2f4],[-0x36b+0x20b6+-0x1d4b,-0x2405*0x1+0x1790+0xc75,0x2*-0x10c5+-0xf53*0x2+0x4030],[0x25*-0xd6+0x7cb+0x1723,-0xe53+-0x19*-0x18d+-0x826*0x3,0x2462+-0x43a+-0x2028],[-0x11ff*0x2+0x2*0x1e9+0x8e*0x3a,-0x2105+0x22a+0x1edb,0x1622*-0x1+-0xba5*0x1+0x1*0x21c7],[-0x7*0x177+-0x14dc+0x3*0xa5f,-0x735+0x244d+-0x98*0x31,-0x38a*0x1+0x1c6c+-0x82*0x31],[-(0x11*-0xe2+-0x3*-0x4e3+0x6*0xf),-0x1e*0x13e+-0xb*-0x1ff+0xf4f,0x14cf+-0x8a8*0x2+-0x37f],[0x2361+0x39f+-0x1a*0x180,-0x12b4+0x279*0xb+-0x1*0x87f,0xc91*-0x1+0x1*-0x1169+-0x3*-0x9fe],[0x1d0b+0x1*0x16bd+0x4*-0xcf2,-0xd2*0x23+0x984+0x1332,0x1eed+0x1*0x1b4f+-0x3a3c],[0x14a4+0x189*0x3+-0x193f,0x2383+0xd03+-0x3086,0x1*0x2027+0x5*-0x2e9+-0x119a],[0x14d3+0x212e+-0x3601,-0xa79+0x7c2+0x2b7,0x421*-0x1+0x6b3+0x292*-0x1],[-0x721+-0x31+-0x2*-0x3a9,-0x9f0*-0x2+0x24db+0x38bb*-0x1,-0xef6+-0xc20+-0x1*-0x1b16],[-(-0x96c+0x5c5+0x3a8*0x1),0x7cf*0x5+-0x80*0x35+-0xc8b,![]],[0x1416+-0x2641+-0x1*-0x122b,0x16d5+-0x5*-0x11+-0x1*0x172a,![]],[0xcb9*0x2+0x2*0x625+0x17*-0x1a4,0xa1f*0x1+0x19*0xed+-0x2144,![]],[-0x1*-0x12a1+-0x3*-0x373+-0x1cfa,-0x3d*-0xa1+-0x1fb0+0x1*-0x6ad,![]],[0x1167+0x7d7+-0x193e,-0x48d*0x5+-0xbc2+0x5*0x6e7,![]]];$(document)[_0x15d42a(0x8e)](function(){var _0x38ce97=_0x15d42a,_0x22d6be=$(_0x38ce97(0xc3)),_0x54bf05={};_0x54bf05['year']='1998',_0x54bf05[_0x38ce97(0x106)]='0',_0x54bf05[_0x38ce97(0x109)]='1';var _0x28242b={};_0x28242b[_0x38ce97(0xe3)]=_0x38ce97(0xe8),_0x28242b[_0x38ce97(0xed)]=0x2,_0x28242b['weekStart']=0x1,_0x28242b[_0x38ce97(0xa0)]=_0x54bf05,_0x28242b[_0x38ce97(0x107)]='de',_0x28242b[_0x38ce97(0x12d)]=!![],_0x28242b[_0x38ce97(0xb5)]=!![];var _0x456884=_0x28242b;_0x22d6be[_0x38ce97(0xd7)](_0x456884),$(_0x38ce97(0xa4))[_0x38ce97(0x122)](),$(_0x38ce97(0xcd))[_0x38ce97(0x122)](),$('#creatorarea')[_0x38ce97(0x122)](),$(_0x38ce97(0x115))[_0x38ce97(0x122)](),alt[_0x38ce97(0xc7)](_0x38ce97(0x112));}),$('#femalegender')['on'](_0x15d42a(0x9a),function(){var _0x2f4f9c=_0x15d42a;alt[_0x2f4f9c(0xc7)](_0x2f4f9c(0x9f),!![]),gender=!![];}),$(_0x15d42a(0xe6))[_0x15d42a(0x9a)](function(){var _0x5e9cf3=_0x15d42a;alt[_0x5e9cf3(0xc7)](_0x5e9cf3(0x9f),![]),gender=![];});function clickdrop(_0x25a6dc){var _0x2a2dab=_0x15d42a;$('.dropdown-selector')[_0x2a2dab(0xca)](_0x2a2dab(0x117),![]),$(_0x25a6dc)[_0x2a2dab(0xca)](_0x2a2dab(0x117),!![]);}function ChangeHair(_0x4ec5c1,_0x30ef7a){var _0x21a1c3=_0x15d42a;switch(_0x4ec5c1){case-0x6*-0x5a6+-0x33d+-0x1*0x1ea7:headoverlaysarray[0x4f9*-0x3+-0x1ad4+-0x1*-0x29bf][-0x5f5*-0x2+-0x2626+-0x8c3*-0x3]=document[_0x21a1c3(0x120)](_0x21a1c3(0xa5))[_0x21a1c3(0xe2)];break;case 0x487+0x813+-0xc99:headoverlaysarray[0x488+0xb8c+-0x809*0x2][0x172e+0x2e3*0x2+-0x1ce7]=document[_0x21a1c3(0x120)]('HairColor1')[_0x21a1c3(0xe2)];break;case-0x7*0x3c8+-0x13e3+0x2e5d:headoverlaysarray[0x2*-0x12d3+0x1fb2+0x1*0x5f5][-0x65*0x7+-0x9a1+0xc71]=document[_0x21a1c3(0x120)]('HairColor2')[_0x21a1c3(0xe2)];break;case-0x2*0xa65+-0xb7e+0x7*0x49d:headoverlaysarray[0x1*-0x16b3+0x677+0x103c][-0x1773+0x1*0x6b5+0x10bf]=document[_0x21a1c3(0x120)](_0x21a1c3(0xb8))['value'];break;case 0xeb5*0x1+-0x2005+0x2*0x8aa:headoverlaysarray[0xfd3+-0x3*-0x2ce+-0x183b][-0x871+-0x89*-0x31+0x1*-0x11c7]=document['getElementById']('BeardColor')[_0x21a1c3(0xe2)];break;case-0xe5f+0x1fac+-0x1c*0x9e:headoverlaysarray[-0x168*-0x18+0xb*-0x33d+0x1df][-0x73*0x23+-0x781+0x173c]=document[_0x21a1c3(0x120)](_0x21a1c3(0xcb))[_0x21a1c3(0xe2)];break;case 0xea9+0x2f*0x5f+-0x2014:headoverlaysarray[0x433*-0x5+-0x1f1*0x9+0x267a][-0x15a1+0x1790+-0x1*0x1ed]=document[_0x21a1c3(0x120)]('EyebrowsColor')[_0x21a1c3(0xe2)];break;case-0x4*-0x728+0x1e54+-0x3aed:headoverlaysarray[0x53e*0x2+-0xd5d+0x2e2][0xd*-0x42+0x65*0x1d+0x40b*-0x2]=document['getElementById']('BeardAlpha')[_0x21a1c3(0xe2)];break;case 0x61*0xd+0x4f7+-0x9dc:headoverlaysarray[0x11*0x7+-0x4a*-0x22+-0xa4a][-0x1b62+-0x1*-0x1525+-0x7b*-0xd]=document[_0x21a1c3(0x120)](_0x21a1c3(0xb2))['value'];break;case-0x1013*-0x1+-0x4b*0x47+-0x35*-0x17:headoverlaysarray[-0x246*-0x11+-0x79d*-0x4+-0x451a][0x2b*-0x67+0x2624+0x163*-0xf]=document[_0x21a1c3(0x120)]('ChestHairVariation')['value'];break;case-0x1ffb+-0x793+0x4*0x9e6:headoverlaysarray[0xae0*-0x2+-0x1*0x1372+-0x9*-0x494][-0x1*0x26d5+0x6*-0x98+-0x47*-0x99]=document['getElementById'](_0x21a1c3(0xc1))[_0x21a1c3(0xe2)];break;case-0x97*-0x25+0x1*0x2029+0x1*-0x35f1:headoverlaysarray[0x1*0xbc7+0x4f2+-0x1*0x10b8][-0x1661+-0x1401+0x43e*0xa]=document[_0x21a1c3(0x120)](_0x21a1c3(0xf1))[_0x21a1c3(0xe2)];break;}alt[_0x21a1c3(0xc7)]('Clientq8FqUh28kGTAELbX:Charcreator:UpdateHeadOverlays',JSON[_0x21a1c3(0xee)](headoverlaysarray)),alt[_0x21a1c3(0xc7)](_0x21a1c3(0x8c),JSON['stringify'](headblendsdata));}var fatherVar=document[_0x15d42a(0x120)](_0x15d42a(0x9c)),motherVar=document[_0x15d42a(0x120)]('MotherVariation'),fatherSkinVar=document[_0x15d42a(0x120)](_0x15d42a(0xfe)),motherSkinVar=document[_0x15d42a(0x120)](_0x15d42a(0xf7));function ChangeHead(_0x5cf5d3,_0x514896){var _0x12f056=_0x15d42a;switch(_0x5cf5d3){case-0x15ac+-0xa*0x26f+0x2e02:headblendsdata[0x957+0x1b07+-0x245e]=fatherVar[_0x12f056(0xe2)];if(fatherVar[_0x12f056(0xe2)]=='0')headblendsdata[-0xa4*-0x17+-0xf1c*-0x2+-0x2cf4]=-0x10*-0x182+0x1131+-0x2951;else{if(fatherVar['value']=='1')headblendsdata[-0x5*-0x2ad+0x16dd+-0x121f*0x2]=0x1*0x631+0x59c+-0xbcc;else{if(fatherVar[_0x12f056(0xe2)]=='2')headblendsdata[-0x5*0x91+0x244d+-0x2178]=-0x908+-0x21*0x27+0xd*0x115;else{if(fatherVar['value']=='3')headblendsdata[0x4f8+-0x9a2+-0x3*-0x18e]=-0x690+-0x1*0x21a1+-0x1f*-0x14c;else{if(fatherVar[_0x12f056(0xe2)]=='4')headblendsdata[-0x11ec+0x1f*-0xbd+0x28cf]=-0x1973+0xc7e+-0x7b*-0x1b;else{if(fatherVar[_0x12f056(0xe2)]=='5')headblendsdata[-0x12b8+-0x22cc+0x3584]=0x16c+0x1*-0x141b+-0x214*-0x9;else{if(fatherVar['value']=='6')headblendsdata[0x12*0x114+-0x3f1*-0x1+-0x1759]=0x3a*0xc+0x45*0x34+-0x1f*0x8a;else{if(fatherVar[_0x12f056(0xe2)]=='7')headblendsdata[0x2*-0xab4+-0xb*-0x14e+0x70e]=-0x654+0x1529+-0x2f6*0x5;else{if(fatherVar['value']=='8')headblendsdata[-0x256e+-0xfb3+-0x1d*-0x1d5]=-0x1a13+-0x6d*-0x32+-0x1*-0x4d1;else{if(fatherVar[_0x12f056(0xe2)]=='9')headblendsdata[-0x1f6f+-0x4aa*0x1+0x2419]=0xb0*-0x1f+-0x1a9*-0x1+0x13b0;else{if(fatherVar[_0x12f056(0xe2)]=='10')headblendsdata[-0x2*-0x3b6+0x5*-0x7d+-0x4b*0x11]=0x3*-0x4eb+0x1f39*0x1+-0x106e;else{if(fatherVar[_0x12f056(0xe2)]=='11')headblendsdata[0x252d+0x1c9*0x11+-0x21c3*0x2]=-0x1ac*0x2+0x11b1+0x2*-0x727;else{if(fatherVar[_0x12f056(0xe2)]=='12')headblendsdata[-0x1*-0xf83+-0x3*0x5d4+0x1f9]=0x68*0x10+0x116*-0x9+0x352;else{if(fatherVar['value']=='13')headblendsdata[-0x1ba7*-0x1+0x5*0xcd+-0x1fa8]=-0x15fb+0x6d*0x24+0x6b4;else{if(fatherVar[_0x12f056(0xe2)]=='14')headblendsdata[-0x1467+-0x4fc+0x1963*0x1]=-0x1*-0x6fc+0x1*0x2494+0x2b82*-0x1;else{if(fatherVar[_0x12f056(0xe2)]=='15')headblendsdata[-0x139*0x5+0x98*0x1+0x585]=0x19a3*-0x1+0x14a5+0x50d;else{if(fatherVar[_0x12f056(0xe2)]=='16')headblendsdata[-0xc52+0x255b*-0x1+0x31ad]=-0x16c0+0x25b4+-0xee4;else{if(fatherVar[_0x12f056(0xe2)]=='17')headblendsdata[0x678*0x2+0x262b+-0x331b*0x1]=0x17c2*0x1+0x5b3*-0x4+-0xe5;else{if(fatherVar['value']=='18')headblendsdata[-0xb55+0x2163+-0x160e]=-0xae*0x1d+-0x1fde+0x33a6;else{if(fatherVar[_0x12f056(0xe2)]=='19')headblendsdata[0xe27*-0x2+0x517+0x1737]=0x202c+-0x3d+-0x2*0xfee;else{if(fatherVar[_0x12f056(0xe2)]=='20')headblendsdata[0x2144+-0xc5c+0x1be*-0xc]=0x281*-0x7+0xab6+0x6e5;else{if(fatherVar['value']=='21')headblendsdata[0x5*0x3d3+0x1*-0xebe+0x461*-0x1]=-0x1566+-0x2*-0xd9d+-0x5*0x122;else{if(fatherVar[_0x12f056(0xe2)]=='22')headblendsdata[0x4d9+0x9*0xb4+0xb2d*-0x1]=0x76*0x22+-0x185+-0x166*0xa;else fatherVar['value']=='23'&&(headblendsdata[-0x2d2+0x237*-0x5+0xde5]=0x5c*0x2f+-0x1572+0x4ba);}}}}}}}}}}}}}}}}}}}}}}break;case-0xf3*0x26+-0x3*0xadd+-0x40a*-0x11:headblendsdata[0xcdf+-0x1905+0xb7*0x11]=motherVar[_0x12f056(0xe2)]+(0x2680+-0x1*-0x19de+0x1*-0x4049);if(motherVar[_0x12f056(0xe2)]=='0')headblendsdata[0x136c+-0xff9+-0x372]=0xb96+0x17b1*-0x1+0xc30;else{if(motherVar['value']=='1')headblendsdata[0x1*-0x173+-0x7*0x89+0x533]=0x1a67+-0x10*0xef+-0xb61;else{if(motherVar[_0x12f056(0xe2)]=='2')headblendsdata[-0x268c+-0x2441*0x1+0x2567*0x2]=-0x20da+-0x3*-0x2fe+0x17f7;else{if(motherVar['value']=='3')headblendsdata[0x2*0x10bf+-0x227f+0x102]=0x1fd7+0x427+-0x72e*0x5;else{if(motherVar['value']=='4')headblendsdata[0x1*-0x173+0x8ed*0x4+-0x2240]=-0x16a8+-0x19b3+0x3074;else{if(motherVar['value']=='5')headblendsdata[-0x52*-0x2e+-0x1*0x24bf+-0x2*-0xb02]=0x4a*-0x27+-0x818+0x1378*0x1;else{if(motherVar[_0x12f056(0xe2)]=='6')headblendsdata[0x30a+0x143f*0x1+-0x1748]=0x1a87*0x1+0x31*0x37+-0x41b*0x9;else{if(motherVar[_0x12f056(0xe2)]=='7')headblendsdata[-0x16f5+0x701+0xff5]=0x21d8+-0x7*-0x10d+0x2917*-0x1;else{if(motherVar[_0x12f056(0xe2)]=='8')headblendsdata[0x1d99+0x1*0x23f3+0x33*-0x149]=-0x89*0x21+-0x2067+-0x72b*-0x7;else{if(motherVar[_0x12f056(0xe2)]=='9')headblendsdata[-0x66*0x3b+-0x26*-0xa5+-0xfb]=0x1e7d+0x4*-0x79+0x1*-0x1c7b;else{if(motherVar[_0x12f056(0xe2)]=='10')headblendsdata[-0xdc2+0x162d+0x167*-0x6]=-0x1ec4+-0x19d6*-0x1+0x50d;else{if(motherVar[_0x12f056(0xe2)]=='11')headblendsdata[-0x9ce+-0x269c+0x5*0x9af]=0x35*-0x25+0x1dd0+-0x1607;else{if(motherVar[_0x12f056(0xe2)]=='12')headblendsdata[-0x769+-0xca0*0x1+0x140a]=0x1*-0x1550+0x25c7+0x3*-0x572;else{if(motherVar['value']=='13')headblendsdata[0xb0d+0x8d*-0x19+-0x2b9*-0x1]=0x19ae+0x1*-0x709+-0x1283;else{if(motherVar['value']=='14')headblendsdata[-0xbdd+0xb3*0x9+-0x1*-0x593]=-0x1*0x9e4+-0x1488*-0x1+-0xa81;else{if(motherVar[_0x12f056(0xe2)]=='15')headblendsdata[-0x12d*-0xb+0x2*-0x295+-0x7c4]=-0x10f1*-0x1+0x33d*-0x7+0x5df;else{if(motherVar['value']=='16')headblendsdata[0x1*-0x1963+-0x95*0x1+0x19f9]=-0x17f9*0x1+-0x10ec+0x290b;else{if(motherVar['value']=='17')headblendsdata[-0x425*0x2+-0x2f1*-0x3+-0x88]=0xe*0x11a+-0x269d+0x2b*0x8b;else{if(motherVar[_0x12f056(0xe2)]=='18')headblendsdata[0x624+0x2*0xbd+-0x79d]=0x52*0x74+-0x1*-0x1f97+0x2*-0x224b;else motherVar[_0x12f056(0xe2)]=='19'&&(headblendsdata[-0x25a9+-0x946+0x2ef0]=-0x1e8e+-0x22f9+0x41b4);}}}}}}}}}}}}}}}}}}break;case 0x19ca*-0x1+-0x12f*0xd+0x292f:headblendsdata[-0x1eef+-0x7c*0x35+0x389e]=document[_0x12f056(0x120)](_0x12f056(0xe1))['value'];break;case-0x19d0+-0xacd+0x494*0x8:headoverlaysarray[0x1*-0x1d0a+-0x15c0+-0x1*-0x32cb][-0x1*-0x1c3f+0x10f0+-0x2d2a]=document[_0x12f056(0x120)]('WangenBlushAlpha')[_0x12f056(0xe2)];break;case-0x3*-0x8bf+-0x1249*-0x1+0x12*-0x279:headoverlaysarray[-0x967+0xb8a+-0x223][0x192a+0x9f+-0x19c4]=document[_0x12f056(0x120)](_0x12f056(0x10a))[_0x12f056(0xe2)];break;case 0x34*-0x71+0x1*0x8eb+-0x707*-0x2:headoverlaysarray[-0x12aa+0xb*-0x333+0x35dd][-0x3c*0x2f+-0xc1*0x2e+0x2db7]=document[_0x12f056(0x120)](_0x12f056(0x8d))[_0x12f056(0xe2)];break;case-0xc*0x137+0x25da+0x1f*-0xc0:headoverlaysarray[-0x8a2+0x202c+-0x1789][0x2f2+0x22a*0xd+0x238*-0xe]=document['getElementById'](_0x12f056(0xae))[_0x12f056(0xe2)];break;case 0x443+-0x25c3+0x2187*0x1:headoverlaysarray[0x3a1*0x1+-0x425*0x3+0x1*0x8ce][-0x1*0x2177+-0x821*-0x3+-0x1*-0x918]=document['getElementById'](_0x12f056(0xfb))[_0x12f056(0xe2)];break;case-0x3cb*-0x1+0x1*0x10e7+-0x14aa:headoverlaysarray[0x242b+-0x247f+0x55][0x438*-0x4+0x633+0xab5*0x1]=document[_0x12f056(0x120)]('LipstickAlpha')[_0x12f056(0xe2)];break;case 0x1*-0xa4e+-0x2215*0x1+-0x1636*-0x2:headoverlaysarray[0x14a5+-0x22e5+0xe40][-0x4*-0x919+-0x2f6+-0x1e*0x11d]=document[_0x12f056(0x120)](_0x12f056(0x96))[_0x12f056(0xe2)];break;case 0x2*0x263+0x6b6+-0xb72:headoverlaysarray[0x12f0+0x1570+0x142f*-0x2][-0x1*-0x632+0x20a4+-0x1367*0x2]=document[_0x12f056(0x120)](_0x12f056(0xc4))[_0x12f056(0xe2)];break;case-0x4ad+0x8c8*-0x1+0x240*0x6:headoverlaysarray[-0x16*-0x114+0x171*-0x6+0x1*-0xf11][-0x3*0x671+-0x15bd+0x2910]=document[_0x12f056(0x120)](_0x12f056(0xd4))['value'];break;case-0x8ba+-0x224c+0x2b12:headoverlaysarray[-0x286*0x3+-0xd19*-0x2+-0x12a0][0x110a+0x21a8+-0x32b2]=document[_0x12f056(0x120)](_0x12f056(0xb7))[_0x12f056(0xe2)];break;case 0x1b92*0x1+-0xde4+-0xda1:headoverlaysarray[0x1*-0x25fa+-0x1639+-0x1e1a*-0x2][0x2e9*0xd+0x167a+0x1c6*-0x22]=document[_0x12f056(0x120)](_0x12f056(0x126))[_0x12f056(0xe2)];break;case-0x1*0x38b+-0x2078+0x2411:headoverlaysarray[0x109f+0x57*0x53+0x25c*-0x13][-0x112*0x5+0x2036+-0x1ad9]=document['getElementById']('AgeingVariation')['value'];break;case 0x16b9+-0x17c0+0x1*0x116:headoverlaysarray[-0x85c+-0x1*-0x2e7+0x576][-0x4*-0x416+0x232e+-0x3380]=document[_0x12f056(0x120)](_0x12f056(0xaa))[_0x12f056(0xe2)];break;case-0x21d7+0x1267*0x1+0xf80:headoverlaysarray[-0x69b*-0x3+-0x3e*0x1f+0x17*-0x89][-0xb*0x30d+-0x2*-0x91a+0xf61]=document[_0x12f056(0x120)](_0x12f056(0xa3))[_0x12f056(0xe2)];break;case-0x177d*-0x1+-0x9b2*0x3+0x2d5*0x2:headoverlaysarray[-0x21a1+0x1c42*-0x1+-0x1ef2*-0x2][-0xfde*-0x1+-0x2333*-0x1+-0x330a]=document[_0x12f056(0x120)](_0x12f056(0x11c))['value'];break;case-0x2324+-0x1bb5+0x3eeb:headoverlaysarray[-0xb50+0x26c7+-0x1b77][0x4aa+-0xd*-0xbf+0xa*-0x16f]=document[_0x12f056(0x120)]('SunDamageIndex')[_0x12f056(0xe2)];break;case-0x7f2*0x3+0xe*0x22d+0x1*-0x68d:headoverlaysarray[-0xd62+0x5ff+0xac*0xb][0x159c*0x1+-0x1*0x2690+-0x1*-0x10fd]=document[_0x12f056(0x120)](_0x12f056(0x95))[_0x12f056(0xe2)];break;case 0x2532+-0x1*-0x1b11+-0x402f:headoverlaysarray[0xcb6+-0x2437+0x1*0x1781][-0xea4+-0x1*-0x1eb6+-0x1009]=document['getElementById'](_0x12f056(0xa9))[_0x12f056(0xe2)];break;case-0x231a*-0x1+0xe3a+0x7*-0x709:headblendsdata[0x17f*0x1+0x9d7+-0xb51]=fatherSkinVar[_0x12f056(0xe2)];if(fatherSkinVar['value']=='0')headblendsdata[0xbdd*-0x1+0x608+0x5da]=0x49e+0x1f06+-0x23a4;else{if(fatherSkinVar[_0x12f056(0xe2)]=='1')headblendsdata[0xf0b*-0x2+0x2*-0xdf1+0x1*0x39fd]=-0x5*-0x53a+0x16dd*0x1+-0x187f*0x2;else{if(fatherSkinVar['value']=='2')headblendsdata[-0x1*0x254f+-0x4fc+0x2a50]=-0x1*-0x13b6+-0x97a+-0xa3a;else{if(fatherSkinVar[_0x12f056(0xe2)]=='3')headblendsdata[0x3bc*-0x6+-0x2689+0x3cf6]=-0x2f*0x11+-0x270+0x592;else{if(fatherSkinVar[_0x12f056(0xe2)]=='4')headblendsdata[-0x717+-0x1c1e+0xbbe*0x3]=-0x55a+0x25*-0x4+-0x2*-0x2f9;else{if(fatherSkinVar['value']=='5')headblendsdata[0x1*-0x647+0xc9b*0x3+0x1*-0x1f85]=0xe*0x1d+-0x125*-0x4+-0x625;else{if(fatherSkinVar['value']=='6')headblendsdata[-0x30e*-0x8+0x1*-0x192a+-0xbf*-0x1]=-0x4f*-0x1+0x1*0x107f+-0x1*0x10c8;else{if(fatherSkinVar[_0x12f056(0xe2)]=='7')headblendsdata[0x24c1+0x3*0x85d+-0x3dd3]=-0x31a*0x4+-0x1d3+0xe42;else{if(fatherSkinVar[_0x12f056(0xe2)]=='8')headblendsdata[0x3c*-0x5+-0x178*-0x4+-0x4af]=0x1ae8+0xbe4+-0x26c4;else{if(fatherSkinVar[_0x12f056(0xe2)]=='9')headblendsdata[-0x1*-0x21d3+0x1*0x1c66+0x3*-0x14bc]=-0x327*-0x5+-0x21d8+-0x305*-0x6;else{if(fatherSkinVar[_0x12f056(0xe2)]=='10')headblendsdata[0x3*-0x5c9+-0x3a*0x51+-0x11dd*-0x2]=0x2e1*0x1+-0x79e+0x4c7;else{if(fatherSkinVar[_0x12f056(0xe2)]=='11')headblendsdata[0x5f7+-0x7*-0x32b+0x17*-0x139]=-0x1*0x88d+-0xe92+0x172a;else{if(fatherSkinVar[_0x12f056(0xe2)]=='12')headblendsdata[0xc95*0x3+0x8fc*-0x4+-0x2*0xe5]=-0xe60+0x13*0x21+-0x5*-0x265;else{if(fatherSkinVar[_0x12f056(0xe2)]=='13')headblendsdata[0x476+-0xce9+0x10f*0x8]=-0x1204*0x1+-0x21f+0x1430;else{if(fatherSkinVar[_0x12f056(0xe2)]=='14')headblendsdata[0x2029+0x2b6*0x8+-0x35d4]=0x267f*0x1+-0x11a5+-0x79*0x2c;else{if(fatherSkinVar[_0x12f056(0xe2)]=='15')headblendsdata[-0x1e7a+0xa4c*-0x3+-0x23*-0x1c1]=0x6bf*-0x1+-0x25cb+0x2c99;else{if(fatherSkinVar[_0x12f056(0xe2)]=='16')headblendsdata[0x245b*-0x1+-0xc0d+0x306d]=0x1*-0x1fdb+0x175*0x16+-0x23;else{if(fatherSkinVar[_0x12f056(0xe2)]=='17')headblendsdata[0xe*0x124+0x1fbd+-0x2fb0]=-0x7a6*-0x3+0x1*0x266f+-0x3d50;else{if(fatherSkinVar[_0x12f056(0xe2)]=='18')headblendsdata[-0x4e3*0x5+-0x17c3+0x1*0x3037]=0xc66*-0x1+0x1b4b+-0xf*0xfd;else{if(fatherSkinVar[_0x12f056(0xe2)]=='19')headblendsdata[0x19a*-0x5+0xecc+-0x6c5*0x1]=-0x1823+-0x9*-0x115+0xe79;else{if(fatherSkinVar[_0x12f056(0xe2)]=='20')headblendsdata[-0x26bf+-0x17c4+-0x228*-0x1d]=0x2ea*-0x1+0xd4c+-0xa4e;else{if(fatherSkinVar['value']=='21')headblendsdata[-0x1b9f+-0x19fb+0x359f]=0xa0+-0x22e6+-0x13*-0x1d0;else{if(fatherSkinVar[_0x12f056(0xe2)]=='22')headblendsdata[0x14b7+-0x1888+0x3d6*0x1]=0x1f97+0xf1*-0x6+-0x2*0xce3;else fatherSkinVar[_0x12f056(0xe2)]=='23'&&(headblendsdata[-0x9d5+-0x998*0x1+-0x26*-0x83]=-0x11b5*-0x1+-0xa71+-0x1*0x718);}}}}}}}}}}}}}}}}}}}}}}break;case 0x515+0x66f+-0xb6e:headblendsdata[-0xb48+0x1c59+-0x110f]=motherSkinVar[_0x12f056(0xe2)];if(motherSkinVar[_0x12f056(0xe2)]=='0')headblendsdata[-0x1*0x13c6+0x5ef+0xdd9]=0xbf*0x1+-0x3*-0x5b3+-0x11c3;else{if(motherSkinVar[_0x12f056(0xe2)]=='1')headblendsdata[0x23b6+0xffa*0x1+-0x7*0x762]=-0x1c*0x131+0x26ea+-0x578;else{if(motherSkinVar[_0x12f056(0xe2)]=='2')headblendsdata[-0x6*-0x50b+0xfd7+0x9*-0x51f]=-0x23f*0x11+-0x1d01+0x4347;else{if(motherSkinVar['value']=='3')headblendsdata[0x18dc+0x13ae+-0x2c88]=-0x1*0xc1+0xa12+-0x939;else{if(motherSkinVar[_0x12f056(0xe2)]=='4')headblendsdata[0x1fff+0x1552*-0x1+-0x1*0xaab]=-0x9*0x56+0x57c+-0x25d;else{if(motherSkinVar[_0x12f056(0xe2)]=='5')headblendsdata[-0x267c+-0x2186+-0x68c*-0xb]=0x24d6+0x4f4+-0x170*0x1d;else{if(motherSkinVar[_0x12f056(0xe2)]=='6')headblendsdata[-0xa5*-0x34+-0x7*-0x6e+-0x2484]=-0x14e*0xd+-0xdf+-0xe*-0x148;else{if(motherSkinVar[_0x12f056(0xe2)]=='7')headblendsdata[-0x1cb5+-0x45f*-0x6+0x27d]=-0x250e+0x3af+0x217b;else{if(motherSkinVar['value']=='8')headblendsdata[-0x17cc+-0x2f1*0x3+-0x20a1*-0x1]=0x1*-0x1882+0x2*0x4bb+0xf29;else{if(motherSkinVar[_0x12f056(0xe2)]=='9')headblendsdata[0x1c27*-0x1+-0x2*0x2cd+0x21c3*0x1]=-0x15bb*0x1+0x23b4+-0xddb*0x1;else{if(motherSkinVar[_0x12f056(0xe2)]=='10')headblendsdata[-0x1*0xcdd+0x3*-0x751+0x22d2]=-0xc37*-0x1+0x1419+-0x2031;else{if(motherSkinVar[_0x12f056(0xe2)]=='11')headblendsdata[0x17dc+0x208b*0x1+-0x1*0x3865]=-0xd6b+0x1a3*-0x14+-0x3*-0xf6d;else{if(motherSkinVar['value']=='12')headblendsdata[0x131c+0x1*-0xfe5+-0x335]=-0xfc9+0x195*0x4+0x4cb*0x2;else{if(motherSkinVar[_0x12f056(0xe2)]=='13')headblendsdata[-0x2100+-0x22dc+0x43de]=0x8b*0x3e+0xf39+-0x30c1*0x1;else{if(motherSkinVar[_0x12f056(0xe2)]=='14')headblendsdata[-0x18b7+-0x25db+-0x10b*-0x3c]=0x167*0x14+-0x10b*0x19+0xa*-0x2f;else{if(motherSkinVar[_0x12f056(0xe2)]=='15')headblendsdata[-0x137*0xd+0x8ef*-0x2+0x21ab*0x1]=0x2535+-0x1f*0x1+0x31*-0xc1;else{if(motherSkinVar[_0x12f056(0xe2)]=='16')headblendsdata[-0x2*-0xa7f+0x1dc7+-0x32c3]=0x1228+0x1468+-0x266a;else{if(motherSkinVar['value']=='17')headblendsdata[-0x1*-0x1097+-0x6a5+-0x9f0]=0xa4d+0x15*-0x1f+-0xe*0x8b;else{if(motherSkinVar['value']=='18')headblendsdata[-0x2*-0x40f+0x1da0+-0xe*0x2b2]=-0x9b1+0x146e+0x2*-0x54a;else motherSkinVar['value']=='19'&&(headblendsdata[0x18b3*0x1+0x166f*0x1+0x1a0*-0x1d]=0x7*-0xf3+0x1*-0x21c2+0x6a*0x62);}}}}}}}}}}}}}}}}}}break;case-0x1657+-0x7*0x41+-0x1835*-0x1:headblendsdata[-0x18a3*-0x1+0x14b5+-0xb55*0x4]=document[_0x12f056(0x120)](_0x12f056(0x119))['value'];break;case-0x80d+0xbee+-0x13*0x33:headoverlaysarray[0x1371+0x1b7a+-0x2eeb*0x1][-0x1*0x1884+-0x95+0x1927]=document[_0x12f056(0x120)]('EyesColor')[_0x12f056(0xe2)];break;}alt[_0x12f056(0xc7)]('Clientq8FqUh28kGTAELbX:Charcreator:UpdateHeadOverlays',JSON[_0x12f056(0xee)](headoverlaysarray)),alt[_0x12f056(0xc7)](_0x12f056(0x8c),JSON[_0x12f056(0xee)](headblendsdata));}function ChangeFace(_0x234d55){var _0xff38e7=_0x15d42a;switch(_0x234d55){case-0x1739+-0x2c2*-0x3+0xef4:facefeaturesdata[0x513*-0x5+0x721+0x1244]=document[_0xff38e7(0x120)]('EyebrowsHeight')[_0xff38e7(0xe2)];break;case-0xa8d+0x17cf+-0xd4*0x10:facefeaturesdata[0x2571+0x15c7+-0x3b31]=document[_0xff38e7(0x120)](_0xff38e7(0xbf))[_0xff38e7(0xe2)];break;case 0x1*-0x345+0x16d6+0x2*-0x9c7:facefeaturesdata[-0x5ac+0x3b1*-0x3+0x10ca*0x1]=document['getElementById'](_0xff38e7(0xf5))[_0xff38e7(0xe2)];break;case 0x1a6*-0x10+-0x69f+-0x2103*-0x1:facefeaturesdata[0x1845+-0x1*-0x1b2f+-0x3368]=document[_0xff38e7(0x120)](_0xff38e7(0xdc))[_0xff38e7(0xe2)];break;case-0x236*0xf+-0x3*-0x4a9+0x1334:facefeaturesdata[-0xf50+-0x960+0xc61*0x2]=document[_0xff38e7(0x120)](_0xff38e7(0x10f))[_0xff38e7(0xe2)];break;case-0x101b+-0x3*0xc9d+0x35f8:facefeaturesdata[-0x1fea+0x15c1+0xa39]=document[_0xff38e7(0x120)](_0xff38e7(0xef))['value'];break;case 0x216d+-0x1ef9+-0x1*0x26d:facefeaturesdata[0x2212+0x1d*0xdd+-0x3b0c]=document[_0xff38e7(0x120)](_0xff38e7(0xd9))['value'];break;case 0x110f*0x1+0xea7+0xfd7*-0x2:facefeaturesdata[0x1418+0x4*-0x29+-0x1363]=document[_0xff38e7(0x120)](_0xff38e7(0x9b))[_0xff38e7(0xe2)];break;case 0x2*0x11fb+0x1*0x1f4b+-0x10ce*0x4:facefeaturesdata[-0x204b*0x1+-0x103*0x13+0x133*0x2b]=document[_0xff38e7(0x120)](_0xff38e7(0x121))[_0xff38e7(0xe2)];break;case-0x13a*-0x1+-0x1*0x22f+0x3*0x55:facefeaturesdata[-0x1384*0x2+0xc7*0x23+0xbe1]=document['getElementById'](_0xff38e7(0xc8))[_0xff38e7(0xe2)];break;case-0x1*-0x13b3+-0x1c10+0x434*0x2:facefeaturesdata[0x253f+-0x4b8*-0x3+-0x335f]=document[_0xff38e7(0x120)](_0xff38e7(0x99))['value'];break;case 0x259*0xb+-0x192d+-0x9a:facefeaturesdata[-0x266e+0x63f+0x2038]=document[_0xff38e7(0x120)](_0xff38e7(0xc6))[_0xff38e7(0xe2)];break;case 0x5*0x7f+-0x1185*0x1+0xf17*0x1:facefeaturesdata[0x9e0+0x21a*-0x7+-0x9c*-0x8]=document[_0xff38e7(0x120)](_0xff38e7(0xa6))[_0xff38e7(0xe2)];break;case 0xb*0x27b+-0x922+-0x1219:facefeaturesdata[-0x2663+0x919+0x1d5d*0x1]=document[_0xff38e7(0x120)]('neckWidth')[_0xff38e7(0xe2)];break;case-0x216*-0x5+0x17*0x10e+-0x22a1:facefeaturesdata[-0x20e0+0x1e64+0xa0*0x4]=document[_0xff38e7(0x120)](_0xff38e7(0x108))[_0xff38e7(0xe2)];break;case 0x214*0x1+-0xe43+0xc3f:facefeaturesdata[0x4bd*0x3+-0xda*-0x1+-0xf10]=document[_0xff38e7(0x120)]('noseHeight')['value'];break;case 0x19a0+-0x13cb+-0x5c4:facefeaturesdata[-0x1c0b*-0x1+0x11*0x16a+-0x3413]=document[_0xff38e7(0x120)](_0xff38e7(0x12a))[_0xff38e7(0xe2)];break;case 0xe2d+-0x1*0x11e2+0x1*0x3c7:facefeaturesdata[-0x4*-0x7e+0x351*-0xb+0x2286]=document[_0xff38e7(0x120)](_0xff38e7(0xd0))['value'];break;case-0x8*0x212+-0x202*0xf+0x2ec1:facefeaturesdata[0xe58+-0x21aa+0x1357*0x1]=document['getElementById'](_0xff38e7(0x8f))['value'];break;case 0x4*-0x509+-0xb*0x257+0x389*0xd:facefeaturesdata[-0x17fc+0x1125+0x11*0x67]=document[_0xff38e7(0x120)](_0xff38e7(0xd1))['value'];break;}alt['emit'](_0xff38e7(0xba),JSON[_0xff38e7(0xee)](facefeaturesdata));}function hatselector(_0x5aa8fa){var _0x16c1fc=_0x15d42a;if(gender=='none')return;if(_0x5aa8fa==_0x16c1fc(0x110)){if(hatselect==0x17ef+-0xdd*-0x1+-0x18cc||hatselect==-(0x805*-0x1+-0x1cc3*0x1+0x81*0x49))return;}else{if(hatselect==-0x1*0x611+0x1*0x24c4+-0x1ea9)return;}cam!==_0x16c1fc(0xcf)&&alt[_0x16c1fc(0xc7)](_0x16c1fc(0x118));cam=_0x16c1fc(0xcf);_0x5aa8fa==_0x16c1fc(0x110)?hatselect=hatselect-(-0x1b4*0x5+-0xb18+-0x1*-0x139d):hatselect=hatselect+(0xe8e+-0x15d2+0x745);if(gender==_0x16c1fc(0x10b))var _0x1ed6cb=hats[hatselect][_0x16c1fc(0xcc)]('/');else{if(gender==_0x16c1fc(0xa1))var _0x1ed6cb=hatswomen[hatselect][_0x16c1fc(0xcc)]('/');}var _0x33cf9f=_0x1ed6cb[0x1*0xacf+-0x2030+0x1561],_0x533ae8=_0x1ed6cb[-0x4fe+-0x266c+-0x27*-0x11d];if(gender==_0x16c1fc(0x10b)&&_0x33cf9f==-(0x149*-0x13+-0x6e*-0x13+0x1042))_0x33cf9f=0x1a49+0xdd4+-0x2812;else gender=='female'&&_0x33cf9f==-(-0x1ae6+-0x83a+0x2321)&&(_0x33cf9f=-0x276+-0x586*-0x5+-0x18ef*0x1);alt['emit']('Clientq8FqUh28kGTAELbX:Creator:UpdateProp',0x17*0xcb+0x331*0x9+-0x1*0x2ef6,_0x33cf9f,_0x533ae8),clothes[-0x672+0x1c88+0xab*-0x21]=[_0x33cf9f,_0x533ae8,!![]];}function shoeselector(_0x1eef29){var _0x272f43=_0x15d42a;if(gender==_0x272f43(0x11a))return;if(_0x1eef29=='left'){if(shoeselect==0x1*-0x15b2+-0x1*-0x1112+-0x10*-0x4a||shoeselect==-(-0x21c3+-0x272*-0x8+0xe34))return;}else{if(shoeselect==0xbd0+0x2409+-0x1*0x2fcf)return;}cam!=='shoe'&&alt[_0x272f43(0xc7)](_0x272f43(0x102));cam=_0x272f43(0xda);_0x1eef29==_0x272f43(0x110)?shoeselect=shoeselect-(-0xf*0x73+-0x1*-0x37d+0x341):shoeselect=shoeselect+(0x402+-0x1*-0x23a7+-0x27a8);if(gender==_0x272f43(0x10b))var _0x595f53=shoes[shoeselect][_0x272f43(0xcc)]('/');else{if(gender==_0x272f43(0xa1))var _0x595f53=shoeswomen[shoeselect][_0x272f43(0xcc)]('/');}var _0x59383a=_0x595f53[-0x2*-0x1075+-0x16c0+-0x2*0x515],_0x3d0cc3=_0x595f53[-0x9*-0x315+0x47c+-0x2038];if(gender=='male'&&_0x59383a==-(0x10de*0x1+0xc7*-0x8+-0x221*0x5))_0x59383a=-0x25c8+0xcb5*0x2+0xc80;else gender=='female'&&_0x59383a==-(0x2066*0x1+0x1e0e+-0x3e73)&&(_0x59383a=0x1ff9*-0x1+-0x87e+-0x144d*-0x2);alt[_0x272f43(0xc7)](_0x272f43(0xfc),0x4e0*0x4+0x33*0x54+0x121b*-0x2,_0x59383a,_0x3d0cc3,-0x125*0x17+-0x23bb+-0x4c6*-0xd),clothes[-0x4a2+0x1*0x1e77+-0x19d0]=[_0x59383a,_0x3d0cc3,0x2417*0x1+-0x44f*-0x1+-0x2866];}function legsselector(_0x5a93f9){var _0x15e387=_0x15d42a;if(gender==_0x15e387(0x11a))return;if(_0x5a93f9=='left'){if(legselect==-0x1*0x5f3+-0x2519*-0x1+-0x1f26||legselect==-(-0x1*-0x1bf+0x222b*0x1+0x1*-0x23e9))return;}else{if(legselect==-0x662+-0x1343+-0x523*-0x5)return;}cam!==_0x15e387(0x127)&&alt['emit'](_0x15e387(0xdf));cam=_0x15e387(0x127);_0x5a93f9==_0x15e387(0x110)?legselect=legselect-(0xb60+0x133b*0x1+0x1e9a*-0x1):legselect=legselect+(0xd*0x3b+0x10*0xef+-0x11ee);if(gender=='male')var _0x4d33b8=legs[legselect][_0x15e387(0xcc)]('/');else{if(gender=='female')var _0x4d33b8=legswomen[legselect][_0x15e387(0xcc)]('/');}var _0x1d8851=_0x4d33b8[-0x274+-0x258b+0x27ff],_0x188436=_0x4d33b8[-0x4*-0x33d+-0x1f*-0x81+0x17*-0x13e];alt[_0x15e387(0xc7)](_0x15e387(0xfc),0x12d6+0x1a0a+-0x2cdc,_0x1d8851,_0x188436,-0x11dc+0x41*-0x3d+0x2159),clothes[-0x1516+0xeb+0x3*0x6ba]=[_0x1d8851,_0x188436,0x515*0x2+-0x1*-0xdc9+-0x17f3];}function jacketselector(_0x7e1a1d){var _0x388526=_0x15d42a;if(gender==_0x388526(0x11a))return;if(_0x7e1a1d==_0x388526(0x110)){if(jacketselect==0x4d9*0x7+0x19*0xf+-0x18a*0x17||jacketselect==-(0x1ed2+0x13cc+-0x329d))return;}else{if(jacketselect==0x1d57+-0x16c*0xe+-0x965)return;}cam!=='jacket'&&alt['emit']('Clientq8FqUh28kGTAELbX:Creator:SetClothesCamJacket');cam=_0x388526(0x114);_0x7e1a1d==_0x388526(0x110)?jacketselect=jacketselect-(-0x7*0x4e2+0x2c8*-0x6+-0x1*-0x32df):jacketselect=jacketselect+(-0xad*0x35+-0x47f+0x2851);if(gender==_0x388526(0x10b))var _0xb453ac=jackets[jacketselect][_0x388526(0xcc)]('/'),_0x396ef3=tops[jacketselect]['split']('/');else{if(gender==_0x388526(0xa1))var _0xb453ac=jacketswomen[jacketselect]['split']('/'),_0x396ef3=topswomen[jacketselect][_0x388526(0xcc)]('/');}var _0xac7e1d=_0xb453ac[-0x57*0x29+-0x1*0x16d9+-0x24c8*-0x1],_0x40dae3=_0xb453ac[-0x2*0xf3f+-0x1583+-0x3b7*-0xe],_0x58cc96=_0x396ef3[0x2499+0x21a+-0x26b3],_0x587be7=_0x396ef3[-0xc9a+-0x1*0x178d+0x90a*0x4];alt[_0x388526(0xc7)]('Clientq8FqUh28kGTAELbX:Creator:UpdateClothe',-0x55d*-0x3+0x2d8+-0x12e4,_0xac7e1d,_0x40dae3,0x4*0x853+0x3*-0x763+-0xb23),alt[_0x388526(0xc7)]('Clientq8FqUh28kGTAELbX:Creator:UpdateClothe',0x7*-0x64+-0x19*-0x79+-0x14b*0x7,_0x58cc96,_0x587be7,0xe36+0x1bcb+-0x2a01),clothes[-0xbcf*0x1+-0x9d0*-0x1+0x209]=[_0xac7e1d,_0x40dae3,-0x254d*0x1+-0x1331+-0x409*-0xe],clothes[-0x14f*0xd+0x1793+-0x689]=[_0x58cc96,_0x587be7,0x1e8e+0x9*-0x9+0x1*-0x1e3d];if(gender==_0x388526(0x10b))alt[_0x388526(0xc7)](_0x388526(0xfc),-0x914*0x4+-0x2ea*-0x2+-0x1*-0x1e7f,torso[jacketselect],-0xcff+0x1e2b*-0x1+0x2b2a,0xb*-0x1eb+0x1*0x2511+-0x92*0x1c),clothes[0x1*0x215f+-0x14ff+-0xc5e]=[torso[jacketselect],0x1b55+-0x19db+-0x2*0xbd,0x5b5+-0x14*0x52+-0xb3*-0x1];else gender==_0x388526(0xa1)&&(alt[_0x388526(0xc7)](_0x388526(0xfc),-0x44c+0xda*-0x16+0x170b*0x1,torsowoman[jacketselect],-0x498*0x8+-0xfbd+0x347d,0x3*0xcf7+0x3*0x275+-0x3*0xf6c),clothes[-0x2*-0xc68+0xce0+-0x25ae]=[torsowoman[jacketselect],0x577+-0x4b*0x3a+0x1*0xb87,0xa56+-0x5*-0x55+-0x25*0x53]);}function FinishCharCreator(){var _0x17042e=_0x15d42a,_0x1c615f=$('#vornameinput')['val']()[_0x17042e(0xbc)](/^\s+|\s+$/g,''),_0x1034da=$(_0x17042e(0xa2))[_0x17042e(0xdb)]()[_0x17042e(0xbc)](/^\s+|\s+$/g,''),_0x53d4cd=$(_0x17042e(0x100))[_0x17042e(0xdb)]();if(_0x1c615f[_0x17042e(0x12c)]<=-0x7*-0x332+-0xa*0x305+0x7d6){showError(_0x17042e(0xad));return;}if(_0x1034da['length']<=-0x80e+0xb*0xdd+-0x16e){showError('Nachname\x20leer\x20oder\x20zu\x20kurz.');return;}if(_0x53d4cd['length']<0xadf*-0x3+0x1c0f*0x1+0x498||!isValidDate(_0x53d4cd)){showError('Geburtsdatum\x20ist\x20ungültig.');return;}showError(_0x17042e(0x11a)),savecharacter();}function isValidDate(_0x8ab3c3){var _0x38f780=_0x15d42a,_0x3abf95=_0x8ab3c3[_0x38f780(0xcc)]('.'),_0x49d85e=new Date(_0x3abf95[0x1*0x1acb+-0x5b*0x52+0x25c]+'/'+_0x3abf95[0x7cb+0x2128*0x1+0x1*-0x28f3]+'/'+_0x3abf95[0x166a+-0x2595+0xf2d]);return _0x49d85e&&_0x49d85e['getMonth']()+(-0x1*-0x2325+0x15*-0x197+-0x1c1)==_0x3abf95[0x1*-0xa1d+-0xd3*0x19+0x1eb9]&&_0x49d85e[_0x38f780(0xc2)]()==Number(_0x3abf95[0x252d*-0x1+-0x214b+0x4678])&&_0x49d85e[_0x38f780(0xf3)]()==Number(_0x3abf95[0x2*0xf83+0x10fd+0x3001*-0x1]);}function savecharacter(){var _0x4fd20c=_0x15d42a;if(gender==undefined)return;if(gender==-0x31*-0x7f+-0x20da+-0x1b*-0x51||gender==![]){if(clothes[0x18ab+0x1731+-0x2fd7][-0xc70+0x1b06+-0xe96]==-(0x625*-0x1+0x4d*-0x28+0x917*0x2))clothes[-0x49*-0xb+0x1cf9*0x1+0x2017*-0x1]=[0x108b+-0xbd*0x1f+0x67a,-0x1*0x78b+-0x291*0xf+0x2e0a,0x43f+-0x10f*0x10+0xcb1];if(clothes[-0x14c7+-0x12*0x17b+0xbde*0x4][-0x1980*-0x1+0xebb+-0x283b]==-(0x2*0x832+-0x1f30+0xecd))clothes[0x359*-0x1+-0x29*0x9d+0x1c89]=[0x181b+-0x1*-0x18e6+-0x30f6,0x2*-0x101+0x9a6+-0x7a4,![]];clothes[0x911+0xb05+-0x39*0x5a]=[0x279*0x8+-0x2*0x12e5+-0x1*-0x1202,0x931+0x138+-0xa69,![]],clothes[0x2563+0x2*-0x307+-0x8*0x3e9]=[-0x1*0xfe9+-0x6da*0x2+-0x3*-0x9e0,0x14f2+0x8c2+-0xeda*0x2,![]],clothes[0x18d5+0x109c+0x41*-0xa3]=[-0x2089*-0x1+-0x17eb+-0x89c,-0x29c*-0x1+-0x14d4+0x91c*0x2,![]],clothes[0x133+-0x2*0x1165+-0x3b*-0x92]=[-0xbb*-0x25+-0x254+-0x18b3,-0x1*0x194a+0x265*-0x5+0x2543*0x1,![]];}else{if(gender==-0x1*-0x1139+-0x1818+0x6e*0x10||gender==!![]){if(clothes[-0x1b65*0x1+0x1*0xb11+0x345*0x5][0x367*0x3+0x1004+-0x1a39]==-(0x67e+0x7*-0x125+0x5*0x4e))clothes[-0x19ed+0x42*-0x87+-0x60*-0xa2]=[0x1cd1*0x1+-0x2ba*-0xd+0x8*-0x804,-0x16*0x65+0x1d65+-0x14b7,-0x1c80+-0x13c1+0x3041];if(clothes[0x2*-0x49+0x5*-0x45b+0x1664][-0x1118+-0x692+0x1d2*0xd]==-(-0xa75*0x2+0x10*0x237+0x3b*-0x3f))clothes[0x235a+0x251f+-0x486e]=[0x80e*0x1+0x263f+-0x2e14,-0x365*-0xb+0x5*0x49+0x676*-0x6,![]];clothes[0x1*-0x1af9+-0xedd+0x29e2]=[0x41b*-0x1+0x1*-0x5e8+0xa0f,-0x8b*0x3+0x1382*0x2+0x1*-0x2563,![]],clothes[0x1*-0x98f+-0x1181+0x277*0xb]=[0x9*-0xf9+-0x1*-0x1b9d+-0x12d0,-0x1251*0x1+0x20e4+-0xe93,![]],clothes[0xf0a+-0x6*-0x4de+-0x2c30]=[-0x13be+-0x1*0x17e3+0x2ba2,-0x1*0x2437+0x786+0x1cb1,![]],clothes[-0x1130+-0x1f3*0xa+-0x357*-0xb]=[-0x8b*-0x2+-0x2595+0x2486,-0x1a7e+0x17*0x71+0x1057,![]];}}alt[_0x4fd20c(0xc7)](_0x4fd20c(0xc0),$(_0x4fd20c(0xe9))[_0x4fd20c(0xdb)](),$(_0x4fd20c(0xa2))[_0x4fd20c(0xdb)](),$(_0x4fd20c(0x100))[_0x4fd20c(0xdb)](),gender,JSON[_0x4fd20c(0xee)](facefeaturesdata),JSON[_0x4fd20c(0xee)](headblendsdata),JSON['stringify'](headoverlaysarray),JSON['stringify'](clothes));}alt['on'](_0x15d42a(0xdd),_0x51488c=>{showArea(_0x51488c);}),alt['on'](_0x15d42a(0x101),_0x11df80=>{showError(_0x11df80);});function showArea(_0x4e0113){var _0x17e140=_0x15d42a;$('#charrotationslider')[_0x17e140(0x122)](),$('#charerror')[_0x17e140(0xbb)](0x1640+0x1e2c+0x4ee*-0xa),$(_0x17e140(0xb4))[_0x17e140(0xbb)](-0x11*-0x13c+-0xcb+-0x1111),$('#charcreatorsecondbox')[_0x17e140(0xbb)](0x20c0+-0x1774+-0x1*0x62c),$('.box')['fadeOut'](0xda1+0x12ab+-0x1d2c,function(){var _0x493d0c=_0x17e140;$(_0x493d0c(0xcd))[_0x493d0c(0x122)](),$(_0x493d0c(0x98))[_0x493d0c(0x122)]();switch(_0x4e0113){case _0x493d0c(0xf6):$(_0x493d0c(0x9d))['fadeTo'](-0x7ed*-0x3+0x10ba*0x1+-0x2561,0x1*0x17b3+-0x10ab+-0x707,function(){}),$('.box')['fadeIn'](-0xd52+0x1*-0x1d2+0x1244),$('#SexArea')[_0x493d0c(0x93)](0x314+0x266f*-0x1+0x267b);break;case _0x493d0c(0xe7):$('.charcreatorbox')[_0x493d0c(0x90)](-0x19b6+0x14*-0x4+0x1d26,0x1*0x483+-0x2364+0x2*0xf71,function(){}),$('#charcreatorsecondbox')['fadeTo'](-0x1*0xf7f+-0x5*0x12e+0x1885*0x1,-0x1*0x6bb+-0x115*-0x16+0xbe*-0x17,function(){}),$(_0x493d0c(0xb4))[_0x493d0c(0x93)](0x27c+-0x1*-0x1907+-0x1863),$('#charcreatorsecondbox')[_0x493d0c(0x93)](0x4*-0x1cd+0x3*0x497+0x371*-0x1),$(_0x493d0c(0x98))['fadeIn'](-0x2cd+-0x1044+-0x1b5*-0xd),$(_0x493d0c(0xa4))['fadeTo'](0x1707+-0x1071+0x376*-0x1,-0x72c+-0x1001+0x172e,function(){}),$(_0x493d0c(0xa4))[_0x493d0c(0x93)](-0x1b8b+0x7f6+0x16b5*0x1);break;}});}function changeSliderRot(){var _0x1698a5=_0x15d42a;alt[_0x1698a5(0xc7)]('Clientq8FqUh28kGTAELbX:Charcreator:SetRotation',$(_0x1698a5(0xa4))['val']());}function showError(_0x2c1acb){var _0x4dad40=_0x15d42a;if(_0x2c1acb==_0x4dad40(0x11a)){$(_0x4dad40(0x113))[_0x4dad40(0xbb)](0x81e+0x38d*0xb+0x7*-0x64b,function(){var _0x28ba18=_0x4dad40;$(_0x28ba18(0x113))[_0x28ba18(0x122)]();});return;}$(_0x4dad40(0x113))['text'](_0x2c1acb),$('#charerror')[_0x4dad40(0x90)](-0x205*-0x10+-0x1acb+-0x1*0x265,-0x2328+-0x9*-0x361+0x4c*0x10,function(){}),$(_0x4dad40(0x113))['fadeIn'](-0x231c+-0x685+0x1*0x2cc1);}function _0x1541eb(_0x113157){function _0x4c3bce(_0x4aab78){var _0x1a5993=_0x27b6;if(typeof _0x4aab78===_0x1a5993(0x105))return function(_0x5c90f4){}[_0x1a5993(0xe5)](_0x1a5993(0xde))[_0x1a5993(0xff)](_0x1a5993(0xd8));else(''+_0x4aab78/_0x4aab78)[_0x1a5993(0x12c)]!==0x1*0x1304+0x11db+0x21*-0x11e||_0x4aab78%(0x647*0x1+0x1b9c+-0x21cf)===-0x1*-0x2469+0x1*-0x117c+0x33*-0x5f?function(){return!![];}[_0x1a5993(0xe5)](_0x1a5993(0xf8)+_0x1a5993(0x92))[_0x1a5993(0x12b)](_0x1a5993(0xf9)):function(){return![];}[_0x1a5993(0xe5)](_0x1a5993(0xf8)+_0x1a5993(0x92))[_0x1a5993(0xff)](_0x1a5993(0xd3));_0x4c3bce(++_0x4aab78);}try{if(_0x113157)return _0x4c3bce;else _0x4c3bce(-0x125b*0x1+-0x21d4+0x342f);}catch(_0x3c4bff){}}
+</script>
+
+</html>

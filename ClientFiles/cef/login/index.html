@@ -1,0 +1,302 @@
+﻿<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="style.css"/>
+</head>
+
+<body>
+    <div class="box" id="mainbox">
+
+            <div id="LoginArea">
+                <div class="login-container">
+                    <div class="char-png">
+                        <img src="img/char.png">
+                    </div>
+                    <div class="login-from">
+                        <h1 class="header">Login</h1>
+                            <label class="label">Username</label><br>
+                            <input type="text" id="email" placeholder="Hans Peter"><br><br><br>
+                            <label class="label">Password</label><br>
+                            <input type="password" id="password" placeholder="••••••••••••"><br><br><br>
+                            <button id="loginbtn" type="button" class="button loginbtn">Anmelden</button><button id="noidlol" type="button" class="button" onclick="showArea('register');">Registrieren</button>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div id="RegisterArea">
+                <div class="login-container">
+                    <div class="char-png">
+                        <img src="img/char2.png">
+                    </div>
+                    <div class="login-from">
+                        <h1 class="header">Register</h1>
+                            <label class="label">Username</label><br>
+                            <input id="registername" type="text" placeholder="Hans Peter"><br><br><br>
+                            <label class="label">Password</label><br>
+                            <input id="registerpassword" type="password" placeholder="••••••••••••"><br><br><br>
+                            <label class="label">Password Wiederholen</label><br>
+                            <input id="registerpasswordrepeat" type="password" placeholder="••••••••••••"><br><br><br>
+                            <label class="label">Discord ID</label><br>
+                            <input id="registeremail" type="text" placeholder="19467635746"><br><br><br>
+                            <button class="button registerbtn" id="noidlol" onclick="showArea('login');" type="button">Anmelden</button><button  id="registerbtn" class="button" type="button loginbtn">Regestrieren</button>
+                    </div>
+                </div>
+            </div> 
+            
+                
+            <div id="CharSelectArea">
+                <div class="login-container">
+                    <div class="char-png">
+                        <img src="img/char3.png">
+                    </div>
+                    <div class="login-from">
+                        <h1 class="header">Charakterauswahl</h1>
+                        <div class="cahr-auswahl">
+                        <ul id="charlist" class="char-list">
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="SpawnSelectArea">
+                <div class="login-container">
+                    <div class="char-png">
+                        <img src="img/char4.png">
+                    </div>
+                    <div class="login-from">
+                        <h1 class="header">Spawnpunkt auswahl</h1>
+                        <ul id="SpawnSelectList" class="ul"></ul>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+       var playbtn_selecteduid = 0;
+    var maxAvailableChars = 2;
+
+    $(function() {
+        $('#killCharacterModalCenter').on('show.bs.modal', function(e) {
+            var button = $(e.relatedTarget)
+
+            var charid = button.data("charid");
+            playbtn_selecteduid = charid;
+            var charname = button.data("charname");
+            var modal = $(this);
+            modal.find('.modal-title').text('Charakter ' + charname + ' (' + charid + ') wirklich töten?');
+        });
+    });
+
+    $(document).ready(function() {
+        $("#mainbox").hide();
+        setTimeout(() => {
+            alt.emit('Clientq8FqUh28kGTAELbX:Login:cefIsReady');
+        }, 1500);
+        showArea("spawnselect");
+    });
+
+    function showArea(area) {
+        $("#error").fadeOut(500);
+            $("#mainbox").css("width", "auto");
+            $("#mainbox").css("height", "100vh");
+            $("#LoginArea").hide();
+            $("#CharSelectArea").hide();
+            $("#SpawnSelectArea").hide();
+            $("#RegisterArea").hide();
+            $("#registertext").hide();
+
+            $(".box").fadeTo(800, 1, function() {});
+            $(".box").fadeIn(800);
+
+            switch (area) {
+                case "login":
+                    $("#LoginArea").fadeIn(800);
+                    $("#registertext").fadeIn();
+                    break;
+                case "register":
+                    $("#RegisterArea").fadeIn(800);
+                    break;
+                case "charselect":
+                    $("#CharSelectArea").fadeIn(800);
+                    break;
+                case "spawnselect":
+                    $("#SpawnSelectArea").fadeIn(800);
+                    break;
+            }
+    }
+
+    function setSpawnSelectTyp(firstspawn) {
+        var SpawnListHTML = "";
+        if (firstspawn == 'true' || firstspawn == true) {
+            //erster Spawn
+            SpawnListHTML = "<li id='selectdsghshg' class='spawn airport' onclick='SelectSpawnPlace(`lsairport`);'><div class='auswahl'>Airport</div></li>";
+            $("#SpawnSelectList").html(SpawnListHTML);
+        } else if (firstspawn == 'false' || firstspawn == false) {
+            //letzte Pos
+            SpawnListHTML = "<li id='selectdsghshg' class='spawn lastpos' onclick='SelectSpawnPlace(`lastpos`);'><div class='auswahl'>Letzte Position</div></li>";
+            $("#SpawnSelectList").html(SpawnListHTML);
+        }
+    }
+
+    // Login Button
+    $("#loginbtn").click(function() {
+        $("#loginbtn").attr("disabled", "true");
+        var emailvalue = $("#email").val().replace(/^\s+|\s+$/g, "");
+        var passvalue = $("#password").val().replace(/^\s+|\s+$/g, "");
+
+        if (emailvalue.length <= 0) {
+            showError("Du hast keinen Username eingegeben.");
+            return;
+        }
+
+        if (passvalue.length <= 0) {
+            showError("Du hast kein Passwort eingegeben.");
+            return;
+        }
+
+        alt.emit('Clientq8FqUh28kGTAELbX:Login:sendLoginDataToServer', emailvalue, passvalue);
+        setTimeout(unlock, 1000);
+        ;
+    });
+
+    function unlock(){
+        $("#loginbtn").removeAttr("disabled");
+    }
+
+    $("#registerbtn").click(function() {
+        $("#registerbtn").attr("disabled", "true");       
+         var namevalue = $("#registername").val().replace(/^\s+|\s+$/g, ""),
+            emailvalue = $("#registeremail").val().replace(/^\s+|\s+$/g, ""),
+            passvalue = $("#registerpassword").val().replace(/^\s+|\s+$/g, ""),
+            passrepvalue = $("#registerpasswordrepeat").val().replace(/^\s+|\s+$/g, "");
+        if (namevalue.length <= 0) {
+            showError("Du hast keinen Usernamen angegeben.");
+            return;
+        }
+
+        if (emailvalue.length <= 0) {
+            showError("Du hast keine Discord ID Angegeben.");
+            return;
+        }
+
+        if (passvalue.length <= 0) {
+            showError("Du hast kein Passwort eingegeben.");
+            return;
+        }
+
+        if (passrepvalue.length <= 0) {
+            showError("Du hast kein Passwort eingegeben.");
+            return;
+        }
+
+        alt.emit('Clientq8FqUh28kGTAELbX:Register:sendRegisterDataToServer', namevalue, emailvalue, passvalue, passrepvalue);
+        setTimeout(unlock, 1000);
+    });
+    
+    
+    function unlock1(){
+        $("#registerbtn").removeAttr("disabled");
+    }
+
+    function SetCharSelectAreaCharacter(charArray) {
+        var charAlive = "";
+        var charAliveCount = 0;
+        charArray = JSON.parse(charArray);
+        for (var i in charArray) {
+            var charFullName = charArray[i].charname;
+
+            if (charArray[i].death === false) {
+                //Charakter am leben
+                charAlive += "<li class='char'><span onclick='CharSelectAreaAction(`view`, " + charArray[i].charId + ");'>" + charArray[i].charname + "</span>" + 
+                "<button onclick='CharSelectAreaAction(`play`, `" + charArray[i].charId + "`, `" + charArray[i].firstjoin + "`);'> Spielen</button>";
+                charAliveCount++;
+            }
+        }
+
+        if (charAliveCount < maxAvailableChars) {
+            charAlive += "<li class='char'><span>Kein Charakter vorhanden</span>" +
+                "<button class='btn charbtn play' onclick='CharSelectAreaAction(`create`);'>Erstellen</button></li>";
+        }
+
+        $("#charlist").html(charAlive);
+    }
+
+    function SelectSpawnPlace(spawnstr) {
+        if (playbtn_selecteduid == 0 || spawnstr == null || spawnstr == "") return;
+
+        $('#selectdsghshg').attr("disabled", "true");
+
+        alt.emit('Clientq8FqUh28kGTAELbX:hfiresg87w6t834dhfsd:jgurhtdbisuhdfsohg', playbtn_selecteduid, spawnstr);
+
+        $(".box").fadeOut(50, function() {
+            alt.emit('Clientq8FqUh28kGTAELbX:Login:DestroyCEFq8FqUh28kGTAELbX');
+        });
+
+        setTimeout(() => {
+            $('#selectdsghshg').removeAttr("disabled");
+        }, 1000);
+    }
+
+    function CharSelectAreaAction(action, value, value2) {
+        if (action == "view") {
+            anime({
+                targets: '#mainbox',
+                left: 50
+            });
+            alt.emit("Clientq8FqUh28kGTAELbX:Charselector:PreviewCharacter", value);
+            return;
+        }
+
+        if (action == "play") {
+            playbtn_selecteduid = value;
+            setSpawnSelectTyp(value2);
+            showArea("spawnselect");
+            return;
+        }
+
+        if (action == "create") {
+            $(".box").fadeOut(800, function() {
+                alt.emit("Clientq8FqUh28kGTAELbX:Charcreator:OpenCreator");
+                return;
+            });
+        }
+    }
+
+    function DeleteCharFinally() {
+        if (playbtn_selecteduid == 0) return;
+        alt.emit("Clientq8FqUh28kGTAELbX:Charselector:KillCharacter", playbtn_selecteduid);
+        playbtn_selecteduid = 0;
+    }
+
+    function showError(msg) {
+        $(".box").fadeIn(800);
+        $("#error").text(msg);
+        $("#error").fadeIn(800);
+    }
+
+    alt.on("CEFq8FqUh28kGTAELbX:Login:showError", (msg) => {
+        showError(msg);
+    });
+
+    alt.on("CEFq8FqUh28kGTAELbX:Charselector:sendCharactersToCEFq8FqUh28kGTAELbX", (charArray) => {
+        SetCharSelectAreaCharacter(charArray);
+    });
+
+    alt.on("CEFq8FqUh28kGTAELbX:Login:showArea", (area) => {
+        showArea(area);
+    });
+
+    alt.on("CEFq8FqUh28kGTAELbX:Login:setStorage", (name, password) => {
+        $("#email").val(`${name}`);
+        $("#password").val(`${password}`);
+    });
+</script>
+</html>

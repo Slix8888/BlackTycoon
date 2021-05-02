@@ -1,0 +1,150 @@
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@font-face {
+	font-family: 'OSL';
+	src: url('../font/OSL.ttf') format('truetype');
+}
+
+.blood {
+ 
+}
+
+body{
+    background: rgba(0, 0, 0, 0.918);
+    background-image: url(blood.png);
+    min-height: 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+    color:#E3E3E3;
+    font-family:sans-serif;
+  }
+  
+  .loading {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    top: 1vw;
+    left: 35vw;
+    }
+  
+  .loading svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .loading #pulsar{
+    max-width: 100%;
+    stroke-dasharray:400;
+    -webkit-animation: dash 6s infinite linear forwards;
+  }
+  
+  /*Animation*/
+  @-webkit-keyframes dash{ from{stroke-dashoffset:814;} to {stroke-dashoffset:-814;}}
+
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100);
+
+@keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+}
+
+@-ms-keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  animation: fadein 1s;
+}
+
+h1, p, h2, h3, h4, ul, li, div {
+  margin: 0px;
+  padding: 0px;
+font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  font-family: Roboto;
+}
+
+.loading-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -0.5vw;
+}
+.loading-page .text-btrp {
+  text-align: center;
+}
+.loading-page .text-btrp p {
+  font-size: 22.2px;
+  font-weight: 10000;
+  color: #ff0000;
+  font-family: 'Roboto', sans-serif;
+
+}
+.loading-page .text-btrp h1 {
+  color: white;
+  font-size: 13px;
+  margin-top: 100px;
+  text-transform: uppercase;
+font-family: 'Open Sans', sans-serif;
+
+}
+.loading-page .text-btrp hr {
+  background: #ff0000;
+  border: none;
+  height: 1px;
+font-family: 'Open Sans', sans-serif;
+}
+.loading-page .text-btrp {
+  position: relative;
+font-family: 'Open Sans', sans-serif;
+}
+.loading-page .text-btrp h1.abs {
+  position: absolute;
+  top: 0;
+  width: 100%;
+font-family: 'Open Sans', sans-serif;
+}
+.loading-page .text-btrp .color {
+  width: 0px;
+  overflow: hidden;
+  color: #ff0000;
+font-family: 'Open Sans', sans-serif;
+}

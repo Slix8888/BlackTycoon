@@ -1,0 +1,147 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.box {
+    background: linear-gradient(rgba(14, 14, 14, 0.548), rgba(0,0,0,0.65)), url('img/b7293640dda842bdb816671976898471.png') no-repeat;
+    background-size: 100% auto;
+    background-position-y: -1000px;
+}
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 50px 0 rgb(20, 29, 47);
+    padding: 16px;
+    max-width: 1000px;
+    padding-right: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(20, 29, 47, 0.815);
+    overflow: visible;
+  }
+
+  .login-from {
+    color: #fff;
+    margin-left: 80px;
+    margin-right: 40px;
+  }
+
+  .show-not {
+    display: none;
+  }
+
+  input {
+    width: 300px;
+    height: 25px;
+    margin-top: 3px;
+    border-radius: 3px 3px 3px 3px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    outline: none;
+  }
+
+  .no-outline:focus {
+    outline: none;
+  }
+
+
+  .button {
+    width: 145px;
+    height: 50px;
+    margin-right: 20px;
+    background-color: rgb(35,50,80);
+    border: 0;
+    color: #fff;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+  }
+
+  .button:hover {
+    background-color: rgb(47, 68, 109);
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-top: 15px;
+  }
+
+  .char-png {
+    height: 514px;
+  }
+
+  .char-png>img {
+    margin-top: -50px;
+    margin-left: -20px;
+    max-height: 600px;
+  }
+  
+  .char-list {
+    list-style: none;
+  }
+
+  .char {
+    margin-top: 20px;
+    width: 400px;
+    height: 50px;
+    background-color: rgb(35,50,80);
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  .char>span {
+    width:200px;
+    margin-left: 15px;
+    margin-top: 15px;
+    display: inline-block;
+  }
+
+  .char>button {
+    float: right;
+    margin-right: 15px;
+    background-color: rgb(9, 29, 70);
+    border: 0;
+    color: #fff;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    height: 30px;
+    width: 80px;
+    margin-top: 10px;
+  }
+
+  .char>button:hover {
+    background-color: rgb(17, 44, 99);
+  }
+
+  .ul {
+    list-style: none;
+  }
+
+  .spawn {
+    background-image: url('img/Clip_bd.png');
+    height: 300px;
+    width: 200px;
+    margin-left: 40px;
+    cursor: pointer;
+  }
+
+  .auswahl {
+    text-align: left;
+    margin: 0 auto;
+    text-align: center;
+    top: 55%;
+    left: 67%;
+    position: absolute;
+  }
